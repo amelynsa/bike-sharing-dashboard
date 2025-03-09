@@ -7,7 +7,7 @@ import seaborn as sns
 st.set_page_config(page_title="Dashboard Peminjaman Sepeda", layout="wide")
 
 # Load dataset
-df = pd.read_csv("main_data.csv", delimiter=",")
+df = pd.read_csv("data/main_data.csv", delimiter=",")
 
 # Judul utama
 st.title("Dashboard Analisis Peminjaman Sepeda")
