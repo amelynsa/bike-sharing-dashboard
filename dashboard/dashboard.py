@@ -28,6 +28,18 @@ def plot_weather_impact(df):
     ax.set_ylabel("Rata-rata Peminjaman")
     st.pyplot(fig)
 
+    # Menambahkan penjelasan setelah visualisasi
+    st.markdown("""
+    ### **📊 Analisis Pengaruh Cuaca terhadap Peminjaman Sepeda**
+    - Cuaca memiliki dampak signifikan terhadap peminjaman sepeda.
+    - Saat **cuaca buruk (hujan ringan atau hujan lebat)**, jumlah peminjaman sepeda cenderung menurun drastis.
+    - Saat **cuaca cerah**, jumlah peminjaman meningkat.
+
+    **Kesimpulan:**  
+    - Perusahaan dapat **menyediakan jas hujan atau diskon** saat cuaca buruk untuk menarik pengguna.  
+    - Pada hari dengan cuaca cerah, stok sepeda dapat ditingkatkan untuk memenuhi permintaan.  
+    """)
+
 # Fungsi untuk visualisasi pola peminjaman antara hari kerja dan akhir pekan
 def plot_workday_pattern(df):
     workday_avg = df.groupby('workingday')['cnt'].mean().reset_index()
@@ -39,11 +51,25 @@ def plot_workday_pattern(df):
     ax.set_ylabel("Rata-rata Peminjaman")
     st.pyplot(fig)
 
+    # Menambahkan penjelasan setelah visualisasi
+    st.markdown("""
+    ### **📊 Analisis Peminjaman Sepeda: Hari Kerja vs Akhir Pekan**
+    - Peminjaman sepeda lebih tinggi pada **hari kerja**, menunjukkan bahwa sepeda lebih banyak digunakan sebagai transportasi ke tempat kerja atau sekolah.
+    - Pada **akhir pekan**, jumlah peminjaman sedikit menurun, kemungkinan lebih banyak digunakan untuk rekreasi.
+
+    **Kesimpulan:**  
+    - Perusahaan dapat **menyesuaikan stok sepeda berdasarkan hari** untuk menghindari kekurangan sepeda saat jam sibuk.  
+    - Strategi promosi dapat dibuat untuk meningkatkan pemakaian sepeda di akhir pekan, seperti diskon atau event bersepeda.  
+    """)
+
 # Sidebar untuk memilih visualisasi
 st.sidebar.header("Pilih Visualisasi")
-viz_choice = st.sidebar.radio("Pilih Analisis:", ("Pengaruh Cuaca", "Hari Kerja vs Akhir Pekan"))
+viz_choice = st.sidebar.radio("Pilih Analisis:", 
+                              ("Pengaruh Cuaca", "Hari Kerja vs Akhir Pekan"))
 
 if viz_choice == "Pengaruh Cuaca":
     plot_weather_impact(df)
 elif viz_choice == "Hari Kerja vs Akhir Pekan":
     plot_workday_pattern(df)
+elif viz_choice == "Peminjaman per Jam":
+    plot_hourly_pattern(df)
