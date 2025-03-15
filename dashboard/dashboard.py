@@ -44,7 +44,7 @@ if visualization_type == "Cuaca":
 
 elif visualization_type == "Hari Kerja vs Akhir Pekan":
     # Halaman Hari Kerja vs Akhir Pekan
-    st.subheader("Analisis Peminjaman Sepeda: Hari Kerja vs Akhir Pekan")
+    st.subheader("Peminjaman Sepeda: Hari Kerja vs Akhir Pekan")
 
     # Filter hari kerja dan akhir pekan
     st.sidebar.header("Filter Hari")
